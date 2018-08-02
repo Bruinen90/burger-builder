@@ -1,0 +1,35 @@
+.Navigation {
+    height: 50px;
+    background-color: #577399;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 3px solid transparent;
+    z-index: 90;
+}
+
+.sidebarToggler {
+    display: none;
+}
+
+@media (max-width: 1087px) {
+    .ifMobile {
+        display: none;
+    }
+    .sidebarToggler {
+        display: block;
+        cursor: pointer;
+        margin-right: 20px;
+    }
+
+    .toggleLine {
+        background-color: white;
+        width: 30px;
+        height: 2px;
+        margin: 7px 0px;
+    }
+}

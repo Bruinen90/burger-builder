@@ -1,0 +1,26 @@
+.NavItems {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 20px;
+}
+
+.NavItems a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.Item {
+    color: red;
+}
+
+@media (min-width: 1080px) {
+.NavItems {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    }
+}

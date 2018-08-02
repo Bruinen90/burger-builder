@@ -1,0 +1,21 @@
+.Order {
+    width: 80%;
+    border: 1px solid #888;
+    border-radius: 10px;
+    box-shadow: 0 2px 3px #ccc;
+    box-sizing: border-box;
+    margin: 20px auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ShippingDataWrapper {
+    line-height: 1.5rem;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.IngredientsList {
+    margin: 0px 10px;
+}

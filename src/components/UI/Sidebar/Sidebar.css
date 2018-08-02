@@ -1,0 +1,24 @@
+.Sidebar {
+    border-right: 1px solid black;
+    height: 100%;
+    width: 400px;
+    max-width: 70%;
+    background-color: white;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 200;
+    padding: 20px;
+    box-sizing: border-box;
+    display: block;
+    transition: transform 0.3s ease-out;
+}
+
+
+/* .Open {
+    transform: translateX(0);
+} */
+
+.Close {
+    transform: translateX(-100%);
+}

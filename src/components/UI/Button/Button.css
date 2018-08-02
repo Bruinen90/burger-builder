@@ -1,0 +1,14 @@
+.Button {
+    border: 0px;
+    background-color: transparent;
+    color: white;
+    font-weight: 400;
+    font-size: 20px;
+    padding: 10px;
+    cursor: pointer;
+    margin: 15px;
+}
+
+.Button:active {
+    outline: none;
+}

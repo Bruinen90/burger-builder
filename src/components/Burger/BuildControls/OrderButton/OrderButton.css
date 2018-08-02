@@ -1,0 +1,19 @@
+.CheckOutButton {
+    width: 160px;
+    height: 40px;
+    display: block;
+    font: inherit;
+    padding: 5px;
+    margin: 0 5px;
+    border: 0px;
+    cursor: pointer;
+    outline: none;
+    background-color: #FE5F55;
+    color: white;
+    margin: 25px;
+}
+
+.CheckOutButton:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}

@@ -1,0 +1,11 @@
+.ContactContainer {
+    width: 80%;
+    text-align: center;
+    margin: 20px auto;
+}
+
+@media (min-width: 800px) {
+    .ContactContainer {
+        width: 600px;
+    }
+}

@@ -1,0 +1,20 @@
+.Prompt {
+    min-width: 400px;
+    max-width: 20%;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 500;
+    left: 0;
+    right: 0;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid black;
+    box-shadow: 4px 4px 10px #555;
+    text-align: center;
+    transform: skewY(0);
+    transition: all 0.7s;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}

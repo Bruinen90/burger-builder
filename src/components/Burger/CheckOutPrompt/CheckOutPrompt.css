@@ -1,0 +1,29 @@
+.OrderDetails {
+    font-size: 20px;
+    width: 300px;
+}
+
+.Header {
+    padding: 0px;
+    color: #4caf50;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.Price {
+    margin-top: 20px;
+    color: #ab003c;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.ContinueButton {
+    border: 0px;
+    background: #4caf50;
+    color: white;
+    font-weight: 400;
+    font-size: 20px;
+    padding: 10px;
+    cursor: pointer;
+    margin: 15px;
+}
