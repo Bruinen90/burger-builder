@@ -17,6 +17,11 @@ class Contact extends Component {
                     placeholder: 'Your name',
                 },
                 value: '',
+                validation: {
+                    required: true,
+                },
+                valid: false,
+                changed: false,
             },
             phone: {
                 elementType: 'input',
@@ -25,6 +30,11 @@ class Contact extends Component {
                     placeholder: 'Your phone number',
                 },
                 value: '',
+                validation: {
+                    required: true,
+                },
+                valid: false,
+                changed: false,
             },
             zipCode: {
                 elementType: 'input',
@@ -33,6 +43,13 @@ class Contact extends Component {
                     placeholder: 'Your zip-code',
                 },
                 value: '',
+                validation: {
+                    required: true,
+                    minLength: 5,
+                    maxLength:6,
+                },
+                valid: false,
+                changed: false,
             },
             street: {
                 elementType: 'input',
@@ -41,6 +58,11 @@ class Contact extends Component {
                     placeholder: 'Your street address',
                 },
                 value: '',
+                validation: {
+                    required: true,
+                },
+                valid: false,
+                changed: false,
             },
             email: {
                 elementType: 'input',
@@ -49,6 +71,11 @@ class Contact extends Component {
                     placeholder: 'Your email address',
                 },
                 value: '',
+                validation: {
+                    required: true,
+                },
+                valid: false,
+                changed: false,
             },
             deliveryMethod: {
                 elementType: 'select',
@@ -58,9 +85,12 @@ class Contact extends Component {
                         {value: 'cheapest', displayValue: 'Cheapest'},
                 ]
                 },
-                value: '',
+                value: 'fastest',
+                validation: {},
+                valid: true,
             },
         },
+        formIsValid: false,
         loading: false,
     }
     submitOrderHandler = (event) => {
@@ -86,6 +116,23 @@ class Contact extends Component {
             })
     }
 
+    checkValidity(value, rules) {
+        let isValid = true;
+
+        if(rules.required) {
+                isValid = value.trim() !== '' && isValid;
+        }
+
+        if(rules.minLength) {
+            isValid = value.length >= rules.minLength && isValid;
+        }
+
+        if(rules.maxLength) {
+            isValid = value.length <= rules.maxLength && isValid;
+        }
+        return isValid;
+    }
+
     inputChangedHandler = (event, inputId) => {
         const updatedOrderForm = {
             ...this.state.orderForm
@@ -94,8 +141,17 @@ class Contact extends Component {
             ...updatedOrderForm[inputId]
         }
         updatedFormElement.value = event.target.value;
+        updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
+        updatedFormElement.changed = true;
         updatedOrderForm[inputId] = updatedFormElement;
-        this.setState({orderForm: updatedOrderForm});
+
+        let formIsValid = true;
+        for (let inputId in updatedOrderForm) {
+            if(updatedOrderForm[inputId].valid === false) {
+                formIsValid = false;
+            }
+        }
+        this.setState({orderForm: updatedOrderForm, formIsValid: formIsValid});
     }
 
     render() {
@@ -112,12 +168,15 @@ class Contact extends Component {
                         key={field.id}
                         elementType={field.config.elementType}
                         elementConfig={field.config.elementConfig}
-                        value={field.value}
+                        value={field.config.value}
                         changed={(event) => this.inputChangedHandler(event, field.id)}
+                        invalid={!field.config.valid}
+                        shouldValidate={field.config.validation}
+                        ifChanged={field.config.changed}
                     />
                 ))}
 
-                <Button>Order now</Button>
+                <Button type="Green" disabled={!this.state.formIsValid}>Order now</Button>
             </form>
             )
 )}}

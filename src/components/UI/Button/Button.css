@@ -12,3 +12,8 @@
 .Button:active {
     outline: none;
 }
+
+.Button:disabled {
+    cursor: not-allowed;
+    opacity: .3;
+}

@@ -26,3 +26,18 @@
     background: #eee;
     border: 1px solid black;
 }
+
+.Invalid {
+    border: 2px solid red;
+}
+
+.Invalid:focus {
+    outline: none;
+    border: 1px solid red;
+    background-color: #ffeaea;
+}
+
+.InvalidMessage {
+    color: red;
+    font-size: .8rem;
+}
