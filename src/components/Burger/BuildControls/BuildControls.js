@@ -29,9 +29,9 @@ const controls = [
                     />
                     {control.type === "meat" && counts[control.type] >0 ?
                         <div className={classes.Doneness}>
-                            <button onClick={props.selectDoneness} value="rare" className={classes.Rare}>Rare</button>
-                            <button onClick={props.selectDoneness} value="medium" className={classes.Medium}>Medium</button>
-                            <button onClick={props.selectDoneness} value="well-done" className={classes.WellDone}>Well Done</button>
+                            <button onClick={()=>props.selectDoneness('rare')} className={classes.Rare}>Rare</button>
+                            <button onClick={()=>props.selectDoneness('medium')} className={classes.Medium}>Medium</button>
+                            <button onClick={()=>props.selectDoneness('well-done')} className={classes.WellDone}>Well Done</button>
                         </div>
                     : null}
                     </Aux>

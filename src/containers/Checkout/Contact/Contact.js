@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios from '../../../axios-orders';
 
+import {connect} from 'react-redux';
+
 import Button from '../../../components/UI/Button/Button';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
@@ -101,9 +103,9 @@ class Contact extends Component {
             formData[formElementId] = this.state.orderForm[formElementId].value
         }
         const order = {
-            ingredients: this.props.ingredients,
-            doneness: this.props.doneness,
-            price: +this.props.price,
+            ingredients: this.props.ings,
+            doneness: this.props.done,
+            price: +this.props.totalPrc,
             customerData: formData,
             }
         axios.post('/orders.json', order)
@@ -179,5 +181,14 @@ class Contact extends Component {
                 <Button type="Green" disabled={!this.state.formIsValid}>Order now</Button>
             </form>
             )
-)}}
-export default Contact;
+)}};
+
+const mapStateToProps = state => {
+    return {
+        ings: state.ingredients,
+        totalPrc: state.totalPrice,
+        done: state.doneness,
+    }
+}
+
+export default connect(mapStateToProps)(Contact);
