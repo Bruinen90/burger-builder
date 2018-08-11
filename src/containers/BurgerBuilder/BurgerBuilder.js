@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import axios from '../../axios-orders.js';
 
 import {connect} from 'react-redux';
-import * as actionTypes from '../../store/actions';
+import * as burgerBuilderActions from '../../store/actions/index';
 
 import Aux from '../../hoc/Auxx/Auxx';
 import Burger from '../../components/Burger/Burger';
@@ -12,23 +11,17 @@ import CheckOutPrompt from '../../components/Burger/CheckOutPrompt/CheckOutPromp
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
+import axios from '../../axios-orders';
+
 
 
 class BurgerBuilder extends Component {
     state = {
         displayPrompt: false,
-        loading: false,
-        error: false,
     };
 
     componentDidMount () {
-        // axios.get('/ingredients.json')
-        //     .then(response => {
-        //         this.setState({ingredients: response.data});
-        //     })
-        //     .catch(error => {
-        //         this.setState({error: true})
-        //     });
+        this.props.onInitIngredients();
     }
 
     checkoutHandler = () => {
@@ -63,7 +56,7 @@ class BurgerBuilder extends Component {
                 </Prompt>
         }
 
-        let burger = this.state.error ?
+        let burger = this.props.error ?
             <p style={{textAlign: 'center', marginTop: '10%'}}>
             Sorry, an error occured, please try again in few minutes
             </p> :
@@ -103,14 +96,16 @@ const mapStateToProps = state => {
         done: state.doneness,
         totalIngs: state.totalIngredients,
         totalPrc: state.totalPrice,
+        error: state.error,
     };
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onIngredientAdded: (ingName) => dispatch({type: actionTypes.ADD_INGREDIENT, ingredientName: ingName}),
-        onIngredientRemoved: (ingName) => dispatch({type: actionTypes.REMOVE_INGREDIENT, ingredientName: ingName}),
-        onChangeDoneness: (newDoneness) => dispatch({type: actionTypes.CHANGE_DONENESS, newDoneness: newDoneness})
+        onIngredientAdded: (ingName) => dispatch(burgerBuilderActions.addIngredient(ingName)),
+        onIngredientRemoved: (ingName) => dispatch(burgerBuilderActions.removeIngredient(ingName)),
+        onChangeDoneness: (newDoneness) => dispatch(burgerBuilderActions.changeDoneness(newDoneness)),
+        onInitIngredients: () => dispatch(burgerBuilderActions.initIngredients()),
     }
 }
 
